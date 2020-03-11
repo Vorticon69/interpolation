@@ -1,6 +1,5 @@
 package ca.gc.dfo.spine.coordinates;
 
-
 import ca.gc.dfo.spine.utils.Maths;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,9 +16,6 @@ public class LatitudeLongitudeTests {
         final LatitudeLongitude ll2 = new LatitudeLongitude(xy);
         Assertions.assertTrue(Maths.closeTo(45.2152366, ll2.latitude));
         Assertions.assertTrue(Maths.closeTo(-74.0495747, ll2.longitude));
-
-        //46.745816, -71.289338 - 46.745816, -71.292653 - 251.79
-
     }
     @Test
     void testDistance()
@@ -29,7 +25,14 @@ public class LatitudeLongitudeTests {
         final LatitudeLongitude ll2 = new LatitudeLongitude(46.745816, -71.292653);
 
         final double distance = LatitudeLongitude.distance(ll1, ll2);
-        //Assertions.assertEquals(251.79, distance);
         Assertions.assertTrue(Maths.closeTo(253.47, distance, 0.01));
+    }
+    @Test
+    void testExceptions()
+    {
+        final Exception ex1 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(-100, 0));
+        final Exception ex2 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(100, 0));
+        final Exception ex3 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(0, -200));
+        final Exception ex4 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(0, 200));
     }
 }

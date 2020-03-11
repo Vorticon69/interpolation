@@ -3,8 +3,15 @@ package ca.gc.dfo.spine.coordinates;
 public class LatitudeLongitude {
     public double latitude, longitude;
 
-    public LatitudeLongitude(final double _latitude, final double _longitude) { latitude = _latitude; longitude = _longitude; }
-    public LatitudeLongitude(final MercatorEN mercator)
+    public LatitudeLongitude(final double _latitude, final double _longitude) throws IllegalArgumentException {
+        if(_latitude < -90) throw new IllegalArgumentException(String.format("latitude (%f) must be in [-90..90] degrees.", _latitude));
+        if(_latitude > 90) throw new IllegalArgumentException(String.format("latitude (%f) must be in [-90..90] degrees.", _latitude));
+        if (_longitude < -180) throw new IllegalArgumentException(String.format("longitude (%f) must be in [-180..180] degrees.", _longitude));
+        if (_longitude > 180) throw new IllegalArgumentException(String.format("longitude (%f) must be in [-180..180] degrees.", _longitude));
+        latitude = _latitude;
+        longitude = _longitude;
+    }
+    public LatitudeLongitude(final MercatorEN mercator) throws IllegalArgumentException
     {
         final double k0 = 0.9996;
         final double a = 6378137.0;
@@ -40,8 +47,14 @@ public class LatitudeLongitude {
         final double lat = phiRad - (N1 * tanPhiRad / R1) * (D * D / 2 - (5 + 3 * tanPhiRad2 + 10 * C1 - 4 * C1 * C1 - 9 * eccPrimeSquared) * D * D * D * D / 24 + (61 + 90 * tanPhiRad2 + 298 * C1 + 45 * tanPhiRad2 * tanPhiRad2 - 252 * eccPrimeSquared - 3 * C1 * C1) * D * D * D * D * D * D / 720);
 
         final double lon = (D - (1 + 2 * tanPhiRad2 + C1) * D * D * D / 6 + (5 - 2 * C1 + 28 * tanPhiRad2 - 3 * C1 * C1 + 8 * eccPrimeSquared + 24 * tanPhiRad2 * tanPhiRad2) * D * D * D * D * D / 120) / cosPhiRad;
-        latitude = lat*rad2deg;
-        longitude = LongOrigin + lon*rad2deg;
+        final double _latitude = lat*rad2deg;
+        final double _longitude = LongOrigin + lon*rad2deg;
+        if(_latitude < -90) throw new IllegalArgumentException(String.format("latitude (%f) must be in [-90..90] degrees.", _latitude));
+        if(_latitude > 90) throw new IllegalArgumentException(String.format("latitude (%f) must be in [-90..90] degrees.", _latitude));
+        if (_longitude < -180) throw new IllegalArgumentException(String.format("longitude (%f) must be in [-180..180] degrees.", _longitude));
+        if (_longitude > 180) throw new IllegalArgumentException(String.format("longitude (%f) must be in [-180..180] degrees.", _longitude));
+        latitude = _latitude;
+        longitude = _longitude;
     }
 
     public static double distance(final LatitudeLongitude p1, final LatitudeLongitude p2)
