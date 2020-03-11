@@ -30,9 +30,9 @@ public class LatitudeLongitudeTests {
     @Test
     void testExceptions()
     {
-        final Exception ex1 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(-100, 0));
-        final Exception ex2 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(100, 0));
-        final Exception ex3 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(0, -200));
-        final Exception ex4 = Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(0, 200));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(-100, 0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(100, 0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(0, -200));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LatitudeLongitude(0, 200));
     }
 }

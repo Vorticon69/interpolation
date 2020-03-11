@@ -16,7 +16,5 @@ public class InterpolationApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
-        LOG.info("Yo Patate !");
-    }
+    public void run(String... args) { LOG.info("Yo Patate !"); }
 }
