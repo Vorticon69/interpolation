@@ -1,6 +1,6 @@
 package ca.gc.dfo.spine.vectors;
 
-import ca.gc.dfo.spine.tools.Utils;
+import ca.gc.dfo.spine.utils.Maths;
 
 public class Vector2 {
     public double x, y;
@@ -15,11 +15,11 @@ public class Vector2 {
         final double denom = Vector2.length(u) * Vector2.length(v);
         return Math.acos(num / denom);
     }
-    public static double dot2(Vector2 u, Vector2 v) { return Utils.Maths.dot2(u.x, u.y, v.x, v.y); }
+    public static double dot2(Vector2 u, Vector2 v) { return Maths.dot2(u.x, u.y, v.x, v.y); }
     public static double length(Vector2 v) {
         final double l2 = lengthSquared(v);
-        if(Utils.Maths.closeToZero(l2)) return 0.0;
-        if(Utils.Maths.closeTo(l2,1)) return 1.0;
+        if(Maths.closeToZero(l2)) return 0.0;
+        if(Maths.closeTo(l2,1)) return 1.0;
         return Math.sqrt(lengthSquared(v));
     }
     public static double lengthSquared(Vector2 v) { return dot2(v, v); }

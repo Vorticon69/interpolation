@@ -1,8 +1,6 @@
-package ca.gc.dfo.spine.tools;
+package ca.gc.dfo.spine.utils;
 
-public class Utils
-{
-    public static class Maths {
+    public class Maths {
         public static final double EPSILON = 0.0001;
 
         public static Boolean closeTo(double x, double y) { return closeToZero(x - y); }
@@ -13,4 +11,3 @@ public class Utils
         public static Boolean lessThan(double x, double y) { return x < y && !closeTo(x, y); }
         public static double linearInterpolation(double x, double a, double b) { return a + x*(b - a); }
     }
-}
