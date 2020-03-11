@@ -1,5 +1,7 @@
 package ca.gc.dfo.spine.coordinates;
 
+import ca.gc.dfo.spine.vectors.Point2;
+
 public class MercatorEN {
     public double x, y;
 
@@ -39,4 +41,7 @@ public class MercatorEN {
         x = Math.abs(_x * K0 + X0);
         y = Math.abs(_y * K0);
     }
+
+    public static double distance(final MercatorEN p1, final MercatorEN p2)
+    { return Point2.distance(new Point2(p1.x, p1.y), new Point2(p2.x, p2.y)); }
 }

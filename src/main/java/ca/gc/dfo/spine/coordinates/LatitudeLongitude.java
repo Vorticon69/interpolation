@@ -43,4 +43,7 @@ public class LatitudeLongitude {
         latitude = lat*rad2deg;
         longitude = LongOrigin + lon*rad2deg;
     }
+
+    public static double distance(final LatitudeLongitude p1, final LatitudeLongitude p2)
+    { return MercatorEN.distance(new MercatorEN(p1), new MercatorEN(p2)); }
 }

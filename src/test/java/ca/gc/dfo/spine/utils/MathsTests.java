@@ -13,6 +13,8 @@ public class MathsTests {
         Assertions.assertTrue(Maths.closeTo(5,4.99999));
         Assertions.assertFalse(Maths.closeTo(5,4.9));
 
+        Assertions.assertTrue(Maths.closeTo(0.2, 0.3, 0.1));
+        Assertions.assertFalse(Maths.closeTo(0.3, 0.2, 0.01));
     }
     @Test
     void testCloseToZero() {
@@ -26,6 +28,9 @@ public class MathsTests {
 
         Assertions.assertFalse(Maths.closeToZero(0.1));
         Assertions.assertFalse(Maths.closeToZero(-0.1));
+
+        Assertions.assertTrue(Maths.closeToZero(0.1,0.1));
+        Assertions.assertFalse(Maths.closeToZero(-0.1,0.01));
     }
     @Test
     void testDot2() {
@@ -35,9 +40,9 @@ public class MathsTests {
 
         3^2 + 4^2 = 5^2
         */
-        double a = 3;
-        double b = 4;
-        double res = Math.sqrt(Maths.dot2(a, b));
+        final double a = 3;
+        final double b = 4;
+        final double res = Math.sqrt(Maths.dot2(a, b));
         Assertions.assertTrue(Maths.closeTo(5, res));
     }
     @Test
