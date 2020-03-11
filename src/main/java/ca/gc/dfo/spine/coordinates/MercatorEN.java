@@ -3,8 +3,8 @@ package ca.gc.dfo.spine.coordinates;
 public class MercatorEN {
     public double x, y;
 
-    public MercatorEN(double _x, double _y) { x = _x; y = _y; }
-    public MercatorEN(LatitudeLongitude latLon)
+    public MercatorEN(final double _x, final double _y) { x = _x; y = _y; }
+    public MercatorEN(final LatitudeLongitude latLon)
     {
         final double Deg2Rad = 180.0 / Math.PI; // Transformation DEG-RAD
         final double Zone = 18.0;

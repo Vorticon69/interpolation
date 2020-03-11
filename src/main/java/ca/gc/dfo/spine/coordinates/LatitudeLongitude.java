@@ -3,8 +3,8 @@ package ca.gc.dfo.spine.coordinates;
 public class LatitudeLongitude {
     public double latitude, longitude;
 
-    public LatitudeLongitude(double _latitude, double _longitude) { latitude = _latitude; longitude = _longitude; }
-    public LatitudeLongitude(MercatorEN mercator)
+    public LatitudeLongitude(final double _latitude, final double _longitude) { latitude = _latitude; longitude = _longitude; }
+    public LatitudeLongitude(final MercatorEN mercator)
     {
         final double k0 = 0.9996;
         final double a = 6378137.0;
